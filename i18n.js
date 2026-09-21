@@ -1,0 +1,60 @@
+// Shared by content.js and popup.js.
+const I18N = {
+  es: {
+    locale: "es-ES",
+    popAdd: "Añadir a recordatorios",
+    popSaved: "✓ En recordatorios",
+    popDate: "Sale el {date}",
+    popRemove: "clic para quitar",
+    popNoDate: "Genius no tiene fecha. Clic para elegir una.",
+    pickDate: "Elige la fecha de lanzamiento",
+    upcoming: "Próximos lanzamientos",
+    emptyDay: "Nada guardado este día.",
+    emptyAll: "Nada guardado. Abre una canción o álbum en Genius y pulsa la campana 🔔.",
+    album: "Álbum",
+    song: "Canción",
+    remove: "Quitar",
+    prevMonth: "Mes anterior",
+    nextMonth: "Mes siguiente",
+    weekdays: ["L", "M", "X", "J", "V", "S", "D"],
+    settings: "Ajustes",
+    back: "Volver",
+    language: "Idioma",
+    theme: "Tema",
+    system: "Sistema",
+    light: "Claro",
+    dark: "Oscuro",
+  },
+  en: {
+    locale: "en-US",
+    popAdd: "Add to reminders",
+    popSaved: "✓ In reminders",
+    popDate: "Out {date}",
+    popRemove: "click to remove",
+    popNoDate: "Genius has no date. Click to pick one.",
+    pickDate: "Pick the release date",
+    upcoming: "Upcoming releases",
+    emptyDay: "Nothing saved on this day.",
+    emptyAll: "Nothing saved yet. Open a song or album on Genius and press the bell 🔔.",
+    album: "Album",
+    song: "Song",
+    remove: "Remove",
+    prevMonth: "Previous month",
+    nextMonth: "Next month",
+    weekdays: ["M", "T", "W", "T", "F", "S", "S"],
+    settings: "Settings",
+    back: "Back",
+    language: "Language",
+    theme: "Theme",
+    system: "System",
+    light: "Light",
+    dark: "Dark",
+  },
+};
+
+const DEFAULT_SETTINGS = { lang: "en", theme: "system" };
+
+async function getSettings() {
+  const { settings } = await chrome.storage.local.get("settings");
+  return { ...DEFAULT_SETTINGS, ...settings };
+}

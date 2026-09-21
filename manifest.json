@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Genius Release Reminder",
+  "version": "1.2.0",
+  "description": "Save upcoming Genius releases and see them on a calendar.",
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Genius Release Reminder",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://genius.com/*"
+      ],
+      "js": [
+        "page-data.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://genius.com/*"
+      ],
+      "js": [
+        "i18n.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

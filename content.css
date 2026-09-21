@@ -1,0 +1,83 @@
+#gr-root {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  font: 12px/1.35 system-ui, sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: left;
+  z-index: 5;
+}
+/* Centered under Genius' ⚡ icon (its column is narrower than our button). */
+#gr-root.gr-under-pyong { margin: 14px 0 0 50%; transform: translateX(-50%); }
+/* Old album page: the ⚡ box also holds the count, so center under the icon (~18px wide). */
+#gr-root.gr-old-pyong { position: absolute; top: calc(100% + 12px); left: 9px; transform: translateX(-50%); }
+#gr-root.gr-inline { display: inline-block; margin-left: 0.5em; vertical-align: middle; }
+
+#gr-btn {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.15s, transform 0.15s, background-color 0.15s;
+}
+#gr-btn svg { width: 14px; height: 14px; }
+#gr-btn:hover { opacity: 1; transform: scale(1.08); }
+#gr-btn.gr-saved { color: #000; background: #ffff64; border-color: #000; opacity: 1; }
+#gr-btn.gr-saved svg { fill: currentColor; }
+
+#gr-pop {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 10px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 11px;
+  color: #111;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.18), 0 0 0 1px rgb(0 0 0 / 0.06);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-4px, -50%);
+  transition: opacity 0.15s, transform 0.15s;
+}
+#gr-pop::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  transform: translateY(-50%) rotate(45deg);
+}
+#gr-pop strong { font-weight: 700; }
+#gr-pop span { color: #666; }
+#gr-root:hover #gr-pop,
+#gr-root:focus-within #gr-pop,
+#gr-root.gr-open #gr-pop,
+#gr-root.gr-picking #gr-pop {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(0, -50%);
+}
+
+#gr-date {
+  margin-top: 4px;
+  padding: 3px 6px;
+  font: 12px system-ui, sans-serif;
+  color: #111;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}

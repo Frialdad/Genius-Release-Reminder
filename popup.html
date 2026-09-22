@@ -7,6 +7,7 @@
 </head>
 <body>
   <main id="calendar">
+    <p id="clock"></p>
     <header>
       <button id="prev" class="icon" data-i18n-label="prevMonth">‹</button>
       <h1 id="month"></h1>
@@ -37,6 +38,11 @@
       <label><input type="radio" name="theme" value="system"> <span data-i18n="system"></span></label>
       <label><input type="radio" name="theme" value="light"> <span data-i18n="light"></span></label>
       <label><input type="radio" name="theme" value="dark"> <span data-i18n="dark"></span></label>
+    </fieldset>
+    <fieldset>
+      <legend data-i18n="notifications"></legend>
+      <label><input type="checkbox" name="notify"> <span data-i18n="notifyEnable"></span></label>
+      <label><span data-i18n="notifyTime"></span> <input type="time" name="notifyTime"></label>
     </fieldset>
   </section>
 

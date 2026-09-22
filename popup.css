@@ -95,3 +95,7 @@ h2 { margin: 14px 0 6px; font-size: 13px; }
 #list span { color: var(--muted); font-size: 12px; }
 .del { width: 24px; height: 24px; border-radius: 4px; font-size: 16px; color: var(--muted); }
 .del:hover { background: var(--line); color: var(--fg); }
+
+#clock { margin: 0 0 8px; text-align: center; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+#clock::first-letter { text-transform: uppercase; }
+fieldset input[type="time"] { margin-left: auto; padding: 2px 4px; font: inherit; color: inherit; background: none; border: 1px solid var(--line); border-radius: 4px; }

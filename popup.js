@@ -32,6 +32,9 @@ function applySettings() {
   });
   for (const name of ["lang", "theme"])
     document.querySelector(`input[name=${name}][value=${settings[name]}]`).checked = true;
+  document.querySelector("input[name=notify]").checked = settings.notify;
+  document.querySelector("input[name=notifyTime]").value = settings.notifyTime;
+  tick();
   $("weekdays").replaceChildren(...t.weekdays.map((d) => Object.assign(document.createElement("span"), { textContent: d })));
 }
 
@@ -136,7 +139,16 @@ $("prev").addEventListener("click", () => shift(-1));
 $("next").addEventListener("click", () => shift(1));
 $("open-settings").addEventListener("click", () => showSettings(true));
 $("close-settings").addEventListener("click", () => showSettings(false));
-$("settings").addEventListener("change", (e) =>
-  chrome.storage.local.set({ settings: { ...settings, [e.target.name]: e.target.value } }));
+function tick() {
+  $("clock").textContent = new Date().toLocaleString(t.locale, {
+    weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit",
+  });
+}
+setInterval(tick, 1000);
+
+$("settings").addEventListener("change", (e) => {
+  const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+  chrome.storage.local.set({ settings: { ...settings, [e.target.name]: value } });
+});
 chrome.storage.onChanged.addListener(load);
 load();

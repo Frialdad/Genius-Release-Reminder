@@ -24,6 +24,10 @@ const I18N = {
     system: "Sistema",
     light: "Claro",
     dark: "Oscuro",
+    notifications: "Notificaciones",
+    notifyEnable: "Activar notificaciones",
+    notifyTime: "Avisar de los lanzamientos de mañana a las",
+    notifyTitle: "Mañana sale",
   },
   en: {
     locale: "en-US",
@@ -49,10 +53,14 @@ const I18N = {
     system: "System",
     light: "Light",
     dark: "Dark",
+    notifications: "Notifications",
+    notifyEnable: "Enable notifications",
+    notifyTime: "Notify about tomorrow's releases at",
+    notifyTitle: "Out tomorrow",
   },
 };
 
-const DEFAULT_SETTINGS = { lang: "en", theme: "system" };
+const DEFAULT_SETTINGS = { lang: "en", theme: "system", notify: false, notifyTime: "" };
 
 async function getSettings() {
   const { settings } = await chrome.storage.local.get("settings");

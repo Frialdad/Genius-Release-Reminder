@@ -36,7 +36,8 @@ Requires Chrome 111 or newer.
 ## Permissions
 
 - `storage` – saves your releases and settings locally in the browser (`chrome.storage.local`). Nothing is sent anywhere.
-- `alarms` – re-checks the badge count every hour so past releases stop being counted.
+- `alarms` – re-checks the badge count every hour so past releases stop being counted, and fires the daily reminder at the time you choose.
+- `notifications` – shows the optional daily reminder with tomorrow's releases. Off by default.
 - Content scripts run only on `https://genius.com/*`.
 
 ## Project structure
@@ -44,7 +45,7 @@ Requires Chrome 111 or newer.
 | File | Purpose |
 | --- | --- |
 | `manifest.json` | Extension manifest (Manifest V3). |
-| `background.js` | Service worker that keeps the toolbar badge count up to date. |
+| `background.js` | Service worker that keeps the toolbar badge count up to date and sends the daily reminder notification. |
 | `page-data.js` | Runs in the page context and reads Genius' data (`window.__PRELOADED_STATE__` or the `page_data` meta tag) to get title, artist, cover and release date. |
 | `content.js` / `content.css` | Adds the bell button and its hover card to Genius pages. |
 | `popup.html` / `popup.js` / `popup.css` | Calendar and settings popup. |
@@ -54,4 +55,3 @@ Requires Chrome 111 or newer.
 ## Known limitations
 
 - Genius changes its page layout from time to time; if the bell stops appearing, the selectors in `content.js` or the data paths in `page-data.js` may need updating.
-- There are no notifications on release day yet; saved releases are shown in the calendar.

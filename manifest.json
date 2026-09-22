@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Genius Release Reminder",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Save upcoming Genius releases and see them on a calendar.",
   "permissions": [
     "storage",
